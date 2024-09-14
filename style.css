@@ -1,0 +1,901 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Play", sans-serif;
+}
+:root{
+    --color-primary: #e1f2ed;
+    --colo-sendary: #f5faf8;
+}
+.header{
+    font-size: 40px;
+    padding: 10px 10px;
+}
+@media only screen and (max-width: 600px){
+    .header{
+        font-size: 28px;
+    }
+    p{
+        font-size: 16px;
+    }
+}
+
+nav{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    height: 80px;
+    color: white;
+    font-size: 1.1rem;
+    position: fixed;
+    z-index: 99;
+}
+.nav-container{
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    width: 80%;
+    margin: 10px 10px;
+    background: black;
+    border-radius: 40px;
+    justify-content: space-between;
+}
+.nav-container .cta{
+    background: white;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 40px;
+    border: 1px solid transparent;
+    font-weight: 500;
+    cursor: pointer;
+}
+.nav-container .logo a {
+    text-decoration: none;
+    color: black;
+}
+.navlinks ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.navlinks ul li{
+    list-style: none;
+    gap: 20px;
+}
+.navlinks ul li a{
+    text-decoration: none;
+    color: white;
+}
+
+@media only screen and (max-width: 935px){
+    .navlinks{
+        position: absolute;
+        display: none;
+        background: black;
+        top: 80px;
+        margin: auto;
+        right: 10%;
+        height: 300px;
+        width: 80%;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+    }
+    .navlinks ul{
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media only screen and (min-width: 936px){
+    .togle-btn{
+        display: none;
+    }
+}
+/* ============================================ HOME SECTION STYLE =======================================*/
+.home{
+    width: 100%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.home-container{
+    width: 80%;
+    margin: 10px auto;
+}
+.join-member{
+    width: 40%;
+    margin:  30px auto;
+    border-radius: 40px;
+    padding: 5px 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    display: flex;
+    align-items: center;
+    background: var(--colo-sendary);
+    box-shadow: transparent 0 0 0 3px,rgba(20, 20, 20, .1) 0 6px 20px;
+}
+
+.member-desc{
+    font-size: 1.2rem;
+}
+.profile-img{
+    object-fit: contain;
+}
+.profile-img img{
+    object-fit: cover;
+    width: 30px;
+    border-radius: 50%;
+    height: 30px;
+}
+.profile-img img:nth-child(2){
+    margin-left: -20px;
+}
+.profile-img img:nth-child(3){
+    margin-left: -20px;
+}
+.home-content{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px 10px;
+}
+.home-content h1{
+    font-size: 60px;
+}
+.home-content p{
+    padding: 10px 10px;
+    font-size: 18px;
+}
+.btn-cta{
+    display: flex;
+    gap: 10px;
+    padding: 30px 10px;
+}
+.btn-cta img{
+    width: 30px;
+    height: 30px;
+    display: none;
+}
+.btn-cta button{
+    padding: 10px 10px;
+    border-radius: 40px;
+    background-image: linear-gradient(1deg, #fb8332, #e46e20 99%);
+    box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
+    border: 1px solid transparent;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+}
+
+
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(-100px); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); 
+    }
+}
+
+@media only screen and (max-width: 800px){
+    .join-member{
+        width: 60%;
+    }
+    .home{
+        padding-top: 80px;
+        height: auto;
+    }
+    .home-content h1 {
+    font-size: 40px;
+}
+}
+@media only screen and (max-width: 640px){
+    .join-member{
+        width: 70%;
+    }
+
+}
+@media only screen and (max-width: 530px){
+    .join-member{
+        width: 80%;
+    }
+
+}
+@media only screen and (max-width: 460px){
+    .join-member{
+        width: 100%;
+        font-size: 16px;
+    }
+    .profile-img img{
+        object-fit: cover;
+        width: 25px;
+        border-radius: 50%;
+        height: 25px;
+    }
+}
+@media only screen and (max-width: 500px){
+    .home-content h1{
+        font-size: 30px;
+    }
+}
+
+
+
+/* ======================================= HOW IT WORKS SECTION STYLE =====================================*/
+.how-works{
+    width: 100%;
+    height: 600px;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.how-works-container{
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.how-works-container p{
+    padding: 10px 10px;
+}
+.how-works-container iframe{
+    width: 100%;
+    height:400px;
+    margin: 10px auto;
+    border-radius: 10px;
+}
+@media only screen and (max-width: 910px){}
+
+
+/* ============================================= FEATURE SECTION STYLE ========================================*/
+.features-section{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    padding-top: 80px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+.features{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    gap: 20px;
+    text-align: center;
+    margin: 20px auto;
+    justify-self: center;
+}
+.feature-box{
+    border-right: 1px solid gray;
+}
+.feature-box:nth-child(4){
+    border: none;
+}
+.feature-box i{
+    background: #fb8332;
+    padding: 10px;
+    border-radius: 50%;
+    color: white;
+}
+.feature-box h3{
+    padding: 10px 10px;
+}
+@media only screen and (max-width: 860px){
+    .features-section{
+        height: auto;
+    }
+}
+@media only screen and (max-width: 600px){
+    .features{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ======================================= PRICING SECTION STYLES =======================================*/
+.pricing-sections{
+    width: 100%;
+    height: 600px;
+    display: flex;
+    padding-top: 100px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.pricing-container{
+    width: 80%;
+    margin: auto;
+}
+.plan-options{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--colo-sendary);
+    box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
+    padding: 10px 10px;
+    border-radius: 40px;
+    border: 1px solid var(--color-primary);
+    width: 150px;
+    margin: 20px auto;
+}
+.plan-options button{
+    border-radius: 40px;
+    padding: 7px;
+    background: transparent;
+    border: 1px silid var(--color-primary);
+}
+.plan-options .btn{
+    background: white;
+    border: 1px solid var(--color-primary);
+}
+.pricing-plans{
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin: 30px auto;
+}
+.plans-box{
+    border: 0.1px solid var(--color-primary);
+    border-radius: 10px;
+}
+.upper-section{
+    background: var(--colo-sendary);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-top: 10px;
+}
+.upper-section button{
+    margin: 10px auto;
+    color: white;
+    padding: 7px 10px;
+    border-radius: 30px;
+    border: none;
+    background: #fb8332;
+    cursor: pointer;
+    width: 80%;
+}
+.upper-section .price{
+    font-size: 25px;
+    font-weight: bold;
+}
+.upper-section .price span{
+    font-size: 13px;
+    font-weight: 100;
+}
+.below-section{
+    text-align: left;
+    padding: 10px 10px;
+}
+.below-section ul li{
+    list-style: none;
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+}
+.below-section ul li i{
+    padding: 2px 2px;
+    color: white;
+    font-size: 12px;
+    margin-right: 5px;
+    background: #fb8332;
+    border-radius: 50%;
+    text-align: center;
+}
+@media only screen and (max-width: 910px){
+    .pricing-sections{
+        height: auto;
+    }
+    .pricing-container{
+        width: 80%;
+    }
+    .pricing-plans{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .pricing-sections {
+        height: auto;
+    }
+    .pricing-container {
+        width: 80%;
+    }
+
+    .pricing-plans {
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap; 
+        overflow-x: auto;  
+        scroll-snap-type: x mandatory; 
+        -webkit-overflow-scrolling: touch; 
+        padding: 20px 0;
+    }
+
+    .plans-box {
+        min-width: 100%; 
+        margin-right: 15px;
+        scroll-snap-align: center; 
+    }
+
+    .plan-options, .plans-box {
+        box-shadow: none;
+    }
+}
+
+
+.pricing-plans::-webkit-scrollbar {
+    display: none;  
+}
+
+/* ==================================== PROCESS SECTION STYLE =================================*/
+.process-sections{
+    width: 100%;
+    height: 600px;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.process-container{
+    width: 80%;
+    margin: auto;
+}
+.process-steps{
+    width: 80%;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.process-steps .steps{
+    border: 1px solid var(--color-primary);
+    border-radius: 10px;
+    background: var(--colo-sendary);
+}
+.process-steps .steps img{
+    width: 100%;
+    height: 50%;
+    padding: 10px 10px;
+}
+.process-steps .steps .img{
+    position: relative;
+    height: 50%;
+    padding: 10px 10px;
+}
+.process-steps .steps .img .details{
+    background: white;
+    padding: 5px 8px;
+    border-radius: 20px;
+    font-size: 13px;
+    width: 80%;
+    margin: 10px auto;
+}
+.process-steps .steps .img .details i{
+    color: #fb8332;
+}
+.process-steps .steps .img .details:nth-child(odd) {
+    transform: translateX(-10%); 
+}
+
+.process-steps .steps .img .details:nth-child(even) {
+    transform: translateX(10%); 
+}
+
+.process-steps .steps .img .details {
+    transition: transform 0.3s ease;
+}
+.process-steps .steps p{
+    font-size: 15px;
+    padding: 10px 10px;
+}
+.divider{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.divider span{
+    padding: 8px 8px;
+    text-align: center;
+    margin: 5px;
+    background: white;
+    border-radius: 50%;
+}
+.divider .line{
+    width: 30%;
+    height: 1px;
+    background: gray;
+}
+@media only screen and (max-width: 910px){
+    .process-sections{
+        height: auto;
+    }
+    .process-container{
+        width: 80%;
+        margin: auto;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .process-sections {
+        height: auto;
+    }
+    .process-container {
+        width: 80%;
+        margin: auto;
+    }
+
+    .process-steps {
+        display: flex;
+        flex-wrap: nowrap; 
+        overflow-x: auto;  
+        scroll-snap-type: x mandatory; 
+        -webkit-overflow-scrolling: touch; 
+        padding: 20px 0;
+        gap: 10px;  
+    }
+
+    .process-steps .steps {
+        min-width: 100%;  
+        margin-right: 15px;
+        scroll-snap-align: center;  
+    }
+
+    .process-steps, .steps {
+        box-shadow: none;
+    }
+}
+
+.process-steps::-webkit-scrollbar {
+    display: none;  
+}
+
+
+/* ======================================== GET TEMPLATE SECTION STYLE ========================================*/
+.get-template{
+    width: 100%;
+    height: 600px;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.get-template-container{
+    width: 80%;
+    margin: auto;
+}
+.join-box{
+    background: black;
+    border-radius: 20px;
+    color: white;
+    width: 70%;
+    margin: auto;
+    height: 300px;
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.join-box .divider{
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.join-box .divider button{
+    padding: 10px 10px;
+    text-align: center;
+    margin: 10px;
+    border: none;
+    color: white;
+    background: #fb8332;
+    border-radius: 20px;
+}
+.join-box .divider .line{
+    width: 35%;
+    height: 1px;
+    background: gray;
+    
+}
+.join-box ul{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+.join-box ul li{
+    list-style: none;
+    padding: 5px 10px;
+    font-size: 13px;
+    background: #596363;
+    border-radius: 20px;
+    gap: 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+.join-box ul li i{
+    padding: 3px 4px;
+    color: white;
+    background: rgb(33, 165, 33);
+    border-radius: 50%;
+    text-align: center;
+}
+.get-template-container .contacts{
+    padding: 10px 10px;
+}
+.get-template-container .contacts h3{
+    padding-top: 20px;
+    padding-bottom: 5px;
+    font-size: 25px;
+}
+.get-template-container .contacts p{
+    padding: 10px 10px;
+}
+.contacts .divider .contact-info{
+    padding: 5px 10px;
+    background: var(--colo-sendary);
+    border: 1px solid var(--color-primary);
+    border-radius: 20px;
+    margin: 10px;
+}
+@media only screen and (max-width: 920px){
+    .get-template{
+        height: auto;
+    }
+}
+@media only screen and (max-width: 920px){
+    .join-box{
+        width: 80%;
+    }
+}
+@media only screen and (max-width: 700px){
+    .join-box{
+        width: 90%;
+        height: auto;
+    }
+}
+@media only screen and (max-width: 600px){
+    .join-box ul{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* ========================================= TESTIMONIALS SECTION STYLE ==============================*/
+.testimonials {
+    width: 100%;
+    height: 600px;
+    padding-top: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.testimonials-container {
+    width: 80%;
+    margin: auto;
+}
+
+.testimony-box {
+    width: 80%;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 35% 60%; 
+    align-items: center;
+    gap: 25px;
+    padding: 10px;
+}
+
+.testimony-video {
+    width: 100%;
+    height: 100%; 
+    border-radius: 10px;
+}
+
+.testimony-video iframe {
+    width: 100%;
+    height: 100%; 
+    border-radius: 10px;
+}
+
+.testimony-content {
+    width: 100%;
+    height: 100%; 
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    background: var(--colo-sendary);
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid var(--color-primary);
+}
+
+.testimony-content .rates {
+    padding: 10px 0;
+    display: flex;
+}
+
+.testimony-content .rates i {
+    color: gold;
+    margin: 5px;
+}
+
+.testimony-content p {
+    padding: 10px 0;
+}
+
+.testimony-content .customer-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.testimony-content .customer-info .name span {
+    opacity: 0.4;
+}
+
+.testimony-content .customer-info .logo {
+    padding-right: 10px;
+}
+.testimonials-box{
+    display: flex;
+    gap: 20px;
+}
+.testimony{
+    border: 1px solid var(--color-primary);
+    text-align: left;
+    background: var(--colo-sendary);
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+.testimony .rates{
+    color: gold;
+    padding: 10px 0px;
+}
+.testimony p{
+    padding: 10px 0px;
+}
+.testimony .reviewer-info{
+    display: flex;
+    align-items: center;
+}
+.testimony .reviewer-info p{
+    padding: 10px 10px;
+}
+.testimony .divider{
+    width: 100%;
+    height: 1px;
+    background: gray;
+    margin: 10px auto;
+    opacity: .4;
+}
+.testimony .reviewer-info img{
+    object-fit: cover;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+@media only screen and (max-width: 910px){
+    .testimonials{
+        height: auto;
+    }
+}
+@media only screen and (max-width: 700px){
+    .testimony-box {
+        display: grid;
+        grid-template-columns: 1fr; 
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 700px) {
+    .testimonials {
+        height: auto;
+    }
+
+    .testimonials-box {
+        overflow-x: auto; 
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 15px;
+        scroll-snap-type: x mandatory; 
+    }
+
+    .testimony {
+        min-width: 100%; 
+        scroll-snap-align: center; 
+        margin-right: 15px;
+    }
+
+ 
+    .testimonials-box::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .testimony-box {
+        display: grid;
+        grid-template-columns: 1fr; 
+    }
+}
+
+
+
+/* ======================================== FOOTER SECTION STYLE ====================================*/
+.footer-divider{
+    width: 80%;
+    margin: auto;
+    height: 1px;
+    background: gray;
+    opacity: .4;
+}
+.footer{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.footer-section{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.footer-section .socials i{
+    background: black;
+    color: white;
+    padding: 8px 8px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 10px;
+}
+.footer-section a{
+    color: black;
+}
+@media only screen and (max-width: 500px){
+    .footer-section{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 10px 10px;
+    }
+}
