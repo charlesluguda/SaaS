@@ -3,319 +3,1365 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SaaS</title>
-    <link rel="stylesheet" href="style.css">
+    <title>iSellova - Modern E-commerce Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Play:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #f97316;
+            --secondary-dark: #ea580c;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --success: #10b981;
+            --radius: 8px;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-outline {
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .toggle-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(to bottom, #f0f9ff, #ffffff);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.05);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 650px;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        
+        .hero-badge img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .hero-badge .avatars {
+            display: flex;
+            margin-left: 10px;
+        }
+        
+        .hero-badge .avatars img {
+            margin-right: -8px;
+            border: 2px solid white;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .hero-demo {
+            display: flex;
+            align-items: center;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .hero-demo i {
+            margin-right: 8px;
+        }
+        
+        .hero-image {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 50%;
+            max-width: 600px;
+            z-index: 1;
+        }
+        
+        /* Trusted By Section */
+        .trusted-by {
+            padding: 60px 0;
+            background: white;
+        }
+        
+        .trusted-header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--gray);
+            font-size: 1.125rem;
+            font-weight: 500;
+        }
+        
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .brand-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: var(--transition);
+            height: 80px;
+        }
+        
+        .brand-item:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        
+        .brand-logo {
+            max-width: 120px;
+            max-height: 60px;
+            object-fit: contain;
+        }
+        
+        /* Sections Common */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+        
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--gray);
+        }
+        
+        /* How It Works */
+        .how-works {
+            background: var(--light);
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .video-container iframe{
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+        
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            /* display: flex; */
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            display: none;
+        }
+        
+        .video-play-btn:hover {
+            background: var(--primary-dark);
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+        
+        .video-play-btn i {
+            font-size: 30px;
+        }
+        
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+        }
+        
+        /* Pricing */
+        .pricing {
+            background: var(--light);
+        }
+        
+        .pricing-toggle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+            gap: 15px;
+        }
+        
+        .pricing-toggle span {
+            font-weight: 500;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 32px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 24px;
+            width: 24px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: var(--primary);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid var(--primary);
+            transform: scale(1.03);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: var(--gray);
+            font-weight: 400;
+        }
+        
+        .pricing-card p {
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .pricing-features li i {
+            color: var(--success);
+            margin-right: 10px;
+        }
+        
+        /* Process */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .process-step:not(:last-child):after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            right: -15px;
+            width: 30px;
+            height: 2px;
+            background: var(--light-gray);
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+        
+        .process-step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .process-step p {
+            color: var(--gray);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: var(--light);
+        }
+        
+        .testimonial-main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .testimonial-video {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 100%;
+        }
+        
+        .testimonial-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .testimonial-rating {
+            color: #fbbf24;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-quote {
+            font-size: 1.25rem;
+            font-style: italic;
+            margin-bottom: 30px;
+            color: var(--dark);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .author-info h4 {
+            font-weight: 600;
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .testimonial-card .testimonial-rating {
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .btn-white {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .btn-white:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .btn-transparent {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+        
+        .btn-transparent:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+        }
+        
+        .footer-links h4 {
+            font-size: 1.125rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+        
+        .footer-bottom a:hover {
+            color: white;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .brands-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .features-grid,
+            .pricing-grid,
+            .process-steps,
+            .testimonials-grid,
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .testimonial-main {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta {
+                display: none;
+            }
+            
+            .toggle-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 120px 0 60px;
+                text-align: center;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+            }
+            
+            .hero-cta {
+                justify-content: center;
+            }
+            
+            .hero-image {
+                position: relative;
+                width: 100%;
+                max-width: 400px;
+                margin: 40px auto 0;
+            }
+            
+            .brands-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .features-grid,
+            .pricing-grid,
+            .process-steps,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .brands-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero-cta, .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav>
-        <div class="nav-container">
-            <div class="logo cta"><a href="index.html">Clever</a></div>
-            <div class="navlinks">
-                <ul>
-                    <li><a href="index.html#how-works">How It Works</a></li>
-                    <li><a href="index.html#benefit">Benefits</a></li>
-                    <li><a href="index.html#pricing">Pricing</a></li>
-                    <li><a href="index.html#process">Process</a></li>
-                    <li><a href="index.html#_testimonial">Testimonials</a></li>
-                    <li><a href="index.html#template" class="cta">Get Template</a></li>
-                </ul>
-            </div>
-            <div class="togle-btn"><i class="bi bi-list"></i></div>
-        </div>
-    </nav>
-    <section class="home" id="homes">
-        <div class="home-container">
-            <div class="join-member">
-                <div class="profile-img">
-                    <img src="assets/img/profile-1.jpg" alt="" srcset="">
-                    <img src="assets/img/profile-2.jpg" alt="" srcset="">
-                    <img src="assets/img/profile-3.jpg" alt="" srcset="">
-                </div>
-                <div class="member-desc">
-                    <p>Join 1000+ Members</p>
-                </div>
-            </div>
-            <div class="home-content">
-                <h1>Fresh and Modern Templates <br> for Agencies & SaaS</h1>
-                <p>Elevate your SaaS product with this expertly designed template, built for SaaS growth</p>
-                <div class="btn-cta">
-                    <img src="assets/img/pppointed.svg" alt="" srcset="">
-                   <button type="button">Join Waitlist</button>
-                </div>
+        <div class="container nav-container">
+            <a href="#" class="logo">i<span>Sellova</span></a>
+            
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#testimonials">Testimonials</a>
             </div>
             
+            <div class="nav-cta">
+                <a href="#" class="btn btn-outline">Login</a>
+                <a href="#" class="btn btn-primary">Start Free Trial</a>
+            </div>
+            
+            <div class="toggle-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>Join 100+ growing stores</span>
+                    <div class="avatars">
+                        <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="User">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User">
+                    </div>
+                </div>
+                
+                <h1>Build Your Online Store Without The Complexity</h1>
+                <p>iSellova gives you everything you need to launch, manage and grow your e-commerce business - all in one platform.</p>
+                
+                <div class="hero-cta">
+                    <a href="#" class="btn btn-primary">Start Free Trial</a>
+                    <a href="#" class="hero-demo">
+                        <i class="fas fa-play-circle"></i>
+                        Watch Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <img src="/assets/img/dashboard.jpg" alt="iSellova Dashboard" class="hero-image">
+    </section>
+
+    <!-- Trusted By Section -->
+    <section class="trusted-by">
+        <div class="container">
+            <div class="trusted-header">
+                Trusted by 100+ innovative brands including:
+            </div>
+            
+            <div class="brands-grid">
+                <div class="brand-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" class="brand-logo">
+                </div>
+                <div class="brand-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" class="brand-logo">
+                </div>
+                <div class="brand-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="brand-logo">
+                </div>
+                <div class="brand-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg" alt="LinkedIn" class="brand-logo">
+                </div>
+                <div class="brand-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung" class="brand-logo">
+                </div>
+                <div class="brand-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" class="brand-logo">
+                </div>
+            </div>
         </div>
     </section>
-    <section class="how-works" id="how-works">
-        <div class="how-works-container">
-            <h2 class="header">How It Works</h2>
-            <p>Sign up, customize your profile, integrate our tools, and enjoy seamless communication with real-time updates
-            </p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/2rzzRxixzq4" 
+
+    <!-- How It Works -->
+    <section class="how-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How iSellova Works</h2>
+                <p>Get your store up and running in minutes with our simple 3-step process</p>
+            </div>
+            
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/2rzzRxixzq4" 
             
             title="YouTube video player" frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
             allowfullscreen>
             </iframe>
-        </div>
-    </section>
-    <section class="features-section" id="benefit">
-        <h2 class="header">Features</h2>
-        <div class="features">
-            <div class="feature-box">
-                <i class="bi bi-phone"></i>
-                <h3>Cross-Platform <br>Compatibility</h3>
-            </div>
-            <div class="feature-box">
-                <i class="bi bi-bell"></i>
-                <h3>Smart Deadline <br>Reminders</h3>
-            </div>
-            <div class="feature-box">
-                <i class="bi bi-stars"></i>
-                <h3>Intuitive User <br>Interface</h3>
-            </div>
-            <div class="feature-box">
-                <i class="bi bi-people-fill"></i>
-                <h3>Real-time <br> Collaboration</h3>
             </div>
         </div>
     </section>
-    <section class="pricing-sections" id="pricing">
-        <div class="pricing-container">
-            <h2 class="header">Affordable Pricing Options</h2>
-            <p>Explore our flexible pricing plans designed to fit various needs and budgets, ensuring value and scalability</p>
-            <div class="plan-options">
-                <button class="btn">Monthly</button>
-                <button>Yearly</button>
+
+    <!-- Features -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Powerful Features for Your Store</h2>
+                <p>Everything you need to start, run and grow your online business</p>
             </div>
-            <div class="pricing-plans">
-                <div class="plans-box">
-                    <div class="upper-section">
-                        <h3>Basic Plan</h3>
-                        <p class="price">$ 10 <span>/ per month</span></p>
-                        <p>Essential features for individuals</p>
-                        <button>Get Started</button>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shopping-cart"></i>
                     </div>
-                    <div class="below-section">
-                        <h3>What's Included</h3>
-                        <ul>
-                            <li><i class="bi bi-check"></i>Time Management</li>
-                            <li><i class="bi bi-check"></i>Data Encryption</li>
-                            <li><i class="bi bi-check"></i>Customer Workflow</li>
-                            <li><i class="bi bi-check"></i>Real-Time Alerts</li>
-                            <li><i class="bi bi-check"></i>Real-Time Sync</li>
-                            <li><i class="bi bi-check"></i>Collaboration Tools</li>
-                        </ul>
-                    </div>
+                    <h3>Easy Product Management</h3>
+                    <p>Add, organize, and manage your products with our intuitive dashboard. Bulk import, inventory tracking, and variants made simple.</p>
                 </div>
-                <div class="plans-box">
-                    <div class="upper-section">
-                        <h3>Business Plan</h3>
-                        <p class="price">$ 20 <span>/ per month</span></p>
-                        <p>Advanced tools for growing teams</p>
-                        <button>Get Started</button>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-paint-brush"></i>
                     </div>
-                    <div class="below-section">
-                        <h3>What's Included</h3>
-                        <ul>
-                            <li><i class="bi bi-check"></i>Time Management</li>
-                            <li><i class="bi bi-check"></i>Data Encryption</li>
-                            <li><i class="bi bi-check"></i>Customer Workflow</li>
-                            <li><i class="bi bi-check"></i>Real-Time Alerts</li>
-                            <li><i class="bi bi-check"></i>Real-Time Sync</li>
-                            <li><i class="bi bi-check"></i>Collaboration Tools</li>
-                        </ul>
-                    </div>
+                    <h3>Beautiful Store Designs</h3>
+                    <p>Choose from dozens of professionally designed templates. No coding needed - customize colors, fonts, and layouts with a click.</p>
                 </div>
-                <div class="plans-box">
-                    <div class="upper-section">
-                        <h3>Enterprise Plan</h3>
-                        <p class="price">$ 40 <span>/ per month</span></p>
-                        <p>Comprehensive feature for company</p>
-                        <button>Get Started</button>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-credit-card"></i>
                     </div>
-                    <div class="below-section">
-                        <h3>What's Included</h3>
-                        <ul>
-                            <li><i class="bi bi-check"></i>Time Management</li>
-                            <li><i class="bi bi-check"></i>Data Encryption</li>
-                            <li><i class="bi bi-check"></i>Customer Workflow</li>
-                            <li><i class="bi bi-check"></i>Real-Time Alerts</li>
-                            <li><i class="bi bi-check"></i>Real-Time Sync</li>
-                            <li><i class="bi bi-check"></i>Collaboration Tools</li>
-                        </ul>
+                    <h3>Secure Payment Processing</h3>
+                    <p>Accept all major payment methods with our secure checkout. PCI compliant with fraud protection built-in.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
                     </div>
+                    <h3>Advanced Analytics</h3>
+                    <p>Make data-driven decisions with detailed reports on sales, customers, and marketing performance.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Shipping & Fulfillment</h3>
+                    <p>Print labels, track packages, and manage orders from a single dashboard. Integrated with major carriers.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Optimized</h3>
+                    <p>Your store will look beautiful on any device. Our themes are fully responsive and mobile-first.</p>
                 </div>
             </div>
         </div>
     </section>
-    <section class="process-sections" id="process">
-        <div class="process-container">
-            <h2 class="header">Getting Started Steps</h2>
-            <p>Follow our simple steps to get started quickly and efficiently with Clevers seamless process</p>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Choose the plan that works best for your business</p>
+            </div>
+            
+            <div class="pricing-toggle">
+                <span>Monthly</span>
+                <label class="toggle-switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+                <span>Yearly <small>(Save 20%)</small></span>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">$19 <span>/month</span></div>
+                    <p>Perfect for new businesses</p>
+                    
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Up to 100 products</li>
+                        <li><i class="fas fa-check"></i> 2 Staff accounts</li>
+                        <li><i class="fas fa-check"></i> Basic analytics</li>
+                        <li><i class="fas fa-check"></i> 24/7 support</li>
+                        <li><i class="fas fa-check"></i> Free SSL certificate</li>
+                    </ul>
+                    
+                    <a href="#" class="btn btn-outline">Get Started</a>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>Business</h3>
+                    <div class="price">$49 <span>/month</span></div>
+                    <p>For growing businesses</p>
+                    
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Unlimited products</li>
+                        <li><i class="fas fa-check"></i> 5 Staff accounts</li>
+                        <li><i class="fas fa-check"></i> Advanced analytics</li>
+                        <li><i class="fas fa-check"></i> Abandoned cart recovery</li>
+                        <li><i class="fas fa-check"></i> Professional reports</li>
+                    </ul>
+                    
+                    <a href="#" class="btn btn-primary">Get Started</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">$149 <span>/month</span></div>
+                    <p>For high-volume businesses</p>
+                    
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Unlimited everything</li>
+                        <li><i class="fas fa-check"></i> 15 Staff accounts</li>
+                        <li><i class="fas fa-check"></i> Advanced report builder</li>
+                        <li><i class="fas fa-check"></i> API access</li>
+                        <li><i class="fas fa-check"></i> Dedicated account manager</li>
+                    </ul>
+                    
+                    <a href="#" class="btn btn-outline">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simple Setup Process</h2>
+                <p>Get your store up and running in just 3 easy steps</p>
+            </div>
+            
             <div class="process-steps">
-                <div class="steps">
-                    <img src="assets/img/login.jpg" alt="">
-                    <div class="divider">
-                        <div class="line"></div>
-                        <span>01</span>
-                        <div class="line"></div>
-                    </div>
-                    <h3>Submit Your Details</h3>
-                    <p>Provide your information through our easy form</p>
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Sign Up & Customize</h3>
+                    <p>Create your account and choose from our beautiful templates. Customize colors, fonts, and layout to match your brand.</p>
                 </div>
-                <div class="steps">
-                    <div class="img">
-                        <div class="details"><i class="bi bi-unlock-fill"></i> Profile Management</div>
-                        <div class="details"><i class="bi bi-unlock-fill"></i> Seamless Intergration</div>
-                        <div class="details"><i class="bi bi-unlock-fill"></i> Smooth Communication</div>
-                        <div class="details"><i class="bi bi-unlock-fill"></i> Early Updates</div>
-                    </div>
-                    <div class="divider">
-                        <div class="line"></div>
-                        <span>02</span>
-                        <div class="line"></div>
-                    </div>
-                    <h3>Receive Access</h3>
-                    <p>Get instant access to your account</p>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Add Your Products</h3>
+                    <p>Upload your products with images, descriptions, and variants. Set up payment and shipping options.</p>
                 </div>
-                <div class="steps">
-                    <img src="assets/img/dashboard.png" alt="">
-                    <div class="divider">
-                        <div class="line"></div>
-                        <span>03</span>
-                        <div class="line"></div>
-                    </div>
-                    <h3>Start Using Clever</h3>
-                    <p>Enjoy the benefit and streamline your workflow</p>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Go Live & Sell</h3>
+                    <p>Connect your domain and publish your store. Start accepting orders and growing your business.</p>
                 </div>
             </div>
         </div>
     </section>
-    <section class="testimonials" id="_testimonial">
-        <div class="testimonials-container">
-            <h2 class="header">What Our Users Say</h2>
-            <p>Read how clever has transformed productivity for our users and hear their success stories</p>
-            <div class="testimony-box">
-                <div class="testimony-video">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/YeybJL4Ll8U" 
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Customers Say</h2>
+                <p>Thousands of businesses trust iSellova to power their online stores</p>
+            </div>
+            
+            <div class="testimonial-main">
+                <div class="testimonial-video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/2rzzRxixzq4" 
+            
             title="YouTube video player" frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
             allowfullscreen>
-            </iframe>                     
+            </iframe>
                 </div>
-                 <div class="testimony-content">
-                    <div class="rates">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
+                
+                <div class="testimonial-content">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                     </div>
-                    <p>Using clever has revolutionized how we manage tasks and collaborate as a team. Its intuitive design and poerful feature
-                        have significantly boosted our productivity and efficiency.
-                    </p>
-                    <div class="customer-info">
-                        <div class="name">
-                            <p>Anderson Michael <br> <span>Founder & CEO</span></p>
+                    
+                    <p class="testimonial-quote">"iSellova transformed our business. We migrated from another platform and saw a 40% increase in sales within the first month thanks to their superior checkout experience."</p>
+                    
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sarah Johnson">
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Founder, Bloom Boutique</p>
                         </div>
-                        <div class="logo">Logo</div>
                     </div>
-                 </div>
-         </div>
-         <div class="testimonials-box">
-            <div class="testimony">
-                <div class="rates">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                </div>
-                <p>I love how easy it is to prioritize tasks and set deadlines with Clever. Its help me to stay on top of my goals.</p>
-                <div class="divider"></div>
-                <div class="reviewer-info">
-                    <img src="assets/img/profile-1.jpg" alt="">
-                    <p>Emily John</p>
-                </div>
-            </div>
-            <div class="testimony">
-                <div class="rates">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                </div>
-                <p>I love how easy it is to prioritize tasks and set deadlines with Clever. Its help me to stay on top of my goals.</p>
-                <div class="divider"></div>
-                <div class="reviewer-info">
-                    <img src="assets/img/profile-2.jpg" alt="">
-                    <p>Sarah Samwel</p>
-                </div>
-            </div>
-            <div class="testimony">
-                <div class="rates">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                </div>
-                <p>I love how easy it is to prioritize tasks and set deadlines with Clever. Its help me to stay on top of my goals.</p>
-                <div class="divider"></div>
-                <div class="reviewer-info">
-                    <img src="assets/img/profile-3.jpg" alt="">
-                    <p>Charlie Deus</p>
-                </div>
-            </div>
-         </div>
-        </div>
-    </section>
-    <section class="get-template" id="template">
-        <div class="get-template-container">
-            <div class="join-box">
-                <h2 class="header">Join Us Today</h2>
-                <p>Take the first step towards enhanced productivity - signup now and start your free trial with Clever</p>
-                <ul>
-                    <li><i class="bi bi-check"></i>Instant Access</li>
-                    <li><i class="bi bi-check"></i>Boost Productivity</li>
-                    <li><i class="bi bi-check"></i>Easy Setup</li>
-                </ul>
-                <div class="divider">
-                    <div class="line"></div>
-                    <button>Get Beta Access</button>
-                    <div class="line"></div>
                 </div>
             </div>
             
-            <div class="contacts">
-                <h3>Clever</h3>
-                <p>Empowering your productivity with Intuitive tools and seamless solutions</p>
-            <div class="divider">
-                <div class="line"></div>
-                <div class="contact-info"> <i class="bi bi-envelope"></i> hello@clever.com</div>
-                <div class="line"></div>
-            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    
+                    <p class="testimonial-text">"The ease of use and powerful features made setting up our store a breeze. Customer support has been exceptional whenever we've needed help."</p>
+                    
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>CEO, TechGadgets</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    
+                    <p class="testimonial-text">"The analytics alone are worth the price. We've optimized our inventory and marketing based on iSellova's insights, leading to higher profitability."</p>
+                    
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Jessica Williams">
+                        <div class="author-info">
+                            <h4>Jessica Williams</h4>
+                            <p>Owner, HomeDecor Plus</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    
+                    <p class="testimonial-text">"After trying several platforms, iSellova stood out for its perfect balance of powerful features and ease of use. Our conversion rates have never been higher."</p>
+                    
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="David Martinez">
+                        <div class="author-info">
+                            <h4>David Martinez</h4>
+                            <p>Founder, Fitness Gear Co.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    <div class="footer-divider"></div>
-    <section class="footer">
-        <div class="footer-section">
-            <p>Developed by <a href="#">Luguda</a></p>
-            <div class="socials">
-                <i class="bi bi-linkedin"></i>
-                <i class="bi bi-twitter-x"></i>
-                <i class="bi bi-instagram"></i>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Start Your E-commerce Journey Today</h2>
+            <p>Join thousands of successful stores using iSellova to sell online. Try it risk-free with our 14-day trial.</p>
+            
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-white">Start Free Trial</a>
+                <a href="#" class="btn btn-transparent">Schedule a Demo</a>
             </div>
-            <p><a href="#">Privacy Policy</a></p>
         </div>
     </section>
-    <script src="app.js"></script>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>iSellova</h3>
+                    <p>Powering the next generation of e-commerce businesses with our all-in-one platform.</p>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Apps</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Partners</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 iSellova. All rights reserved.</p>
+                <div>
+                    <a href="#">Privacy Policy</a> | 
+                    <a href="#">Terms of Service</a> | 
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for mobile menu toggle and video play
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.querySelector('.toggle-btn');
+            const navLinks = document.querySelector('.nav-links');
+            const navCta = document.querySelector('.nav-cta');
+            const videoPlayBtn = document.querySelector('.video-play-btn');
+            
+            // Mobile menu toggle
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('show');
+                    navCta.classList.toggle('show');
+                });
+            }
+            
+            // Video play button
+            if (videoPlayBtn) {
+                videoPlayBtn.addEventListener('click', function() {
+                    const video = this.previousElementSibling;
+                    video.play();
+                    this.style.display = 'none';
+                    video.setAttribute('controls', 'true');
+                });
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
