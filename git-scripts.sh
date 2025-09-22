@@ -9,3 +9,4 @@ git add .
 git commit -m "Update made on the landing page to fit isellova requiremwnts."
 git pull
 git push origin master
+echo -e "SUCESSFULLY............!!!!!!!!!!!!🙌"
